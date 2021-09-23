@@ -1,6 +1,5 @@
-#include <wificonnect.h> //https://github.com/tretyakovsa/wificonnect
+#include <wificonnect.h>
 WIFICONNECT MyWiFi;
-
 #include <ESP8266HTTPUpdateServer.h> //Содержится в пакете
 ESP8266HTTPUpdateServer httpUpdater; 
 #include <ESP8266httpUpdate.h>       //Содержится в пакете
@@ -15,12 +14,14 @@ WebSocketsServer webSocket = WebSocketsServer(82);
 ESP8266WebServer HTTP(80);
 const String webForth =
   "<!DOCTYPE html>\n\r"
-  "<html>\n\r"
+  "<html style=\"height:100%;\">\n\r"
   " <head>\n\r"
-  "  <meta charset=\"UTF-8\">\n\r"
-  "  <title>Forth console</title>\n\r"
+  " <meta charset=\"UTF-8\">\n\r"
+  " <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n\r"
+  " <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\r"
+  "  <title>WebSocket</title>\n\r"
   " </head>\n\r"
-  " <body>\n\r"
+  " <body style=\"height:100%;\">\n\r"
   "  <script>\n\r"
   "   var connection = new WebSocket(\"ws://\"+window.location.host+\":82\", ['arduino']);\n\r"
   "   connection.onmessage = function (e) {\n\r"
@@ -58,9 +59,9 @@ void setup()
  HTTP.begin();
   initWebSocket();
   httpUpdater.setup(&HTTP);
-Serial.flush();
-  //Serial.swap(); // переключит выходы serial на ноги GPIO15-TXD GPOI13-RXD
-Serial.flush();
+
+  //Serial.swap(); 
+
 
    
 }
