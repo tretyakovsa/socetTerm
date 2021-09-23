@@ -1,4 +1,4 @@
-#include <wificonnect.h>
+#include <wificonnect.h>  //https://github.com/tretyakovsa/wificonnect
 WIFICONNECT MyWiFi;
 #include <ESP8266HTTPUpdateServer.h> //Содержится в пакете
 ESP8266HTTPUpdateServer httpUpdater; 
@@ -60,7 +60,9 @@ void setup()
   initWebSocket();
   httpUpdater.setup(&HTTP);
 
-  //Serial.swap(); 
+Serial.flush();
+  //Serial.swap(); // переключит выходы serial на ноги GPIO15-TXD GPOI13-RXD
+Serial.flush();
 
 
    
